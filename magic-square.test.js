@@ -191,3 +191,20 @@ describe('convertNumberToSquare()', () => {
     expect(magicSquare.convertNumberToSquare(number)).toEqual(expect.arrayContaining(expectedArr))
   })
 })
+
+describe('numberHasDuplicatesOrZeros()', () => {
+  test('should return false for number = 123', () => {
+    var number = 123
+    expect(magicSquare.numberHasDuplicatesOrZeros(number)).toEqual(false)
+  })
+
+  test('should return true for number = 1233', () => {
+    var number = 1233
+    expect(magicSquare.numberHasDuplicatesOrZeros(number)).toEqual(true)
+  })
+
+  test('should return true for number = 1203', () => {
+    var number = 1203
+    expect(magicSquare.numberHasDuplicatesOrZeros(number)).toEqual(true)
+  })
+})

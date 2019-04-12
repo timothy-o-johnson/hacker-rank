@@ -159,6 +159,23 @@ function squareHasDuplicatesOrZeros (square) {
   return false
 }
 
+function numberHasDuplicatesOrZeros (number) {
+  var duplObj = {}
+  var val
+  number = number.toString()
+
+  for (var i = 0; i < number.length; i++) {
+    val = parseInt(number[i])
+    if (duplObj[val] || val === 0) {
+      return true
+    } else {
+      duplObj[val] = true
+    }
+  }
+
+  return false
+}
+
 function convertNumberToSquare (number) {
   var numArr = []
   number = number.toString()
@@ -195,5 +212,6 @@ module.exports = {
   doColumnsSumToMagicSum,
   doDiagonalsSumToMagicSum,
   squareHasDuplicatesOrZeros,
-  convertNumberToSquare
+  convertNumberToSquare,
+  numberHasDuplicatesOrZeros
 }
