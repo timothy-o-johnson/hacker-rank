@@ -152,18 +152,42 @@ describe('doDiagonalsSumToMagicSum()', () => {
 })
 
 describe('hasDuplicatesOrZeros()', () => {
-  test('should return false testSquare = [[2, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+  test('should return false for testSquare = [[2, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
     var testSquare = [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
     expect(magicSquare.hasDuplicatesOrZeros(testSquare)).toEqual(false)
   })
 
-  test('should return true testSquare = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+  test('should return true for testSquare = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
     var testSquare = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]
     expect(magicSquare.hasDuplicatesOrZeros(testSquare)).toEqual(true)
   })
 
-  test('should return true testSquare = [[2, 7, 6], [9, 5, 1], [4, 8, 8]]', () => {
+  test('should return true for testSquare = [[2, 7, 6], [9, 5, 1], [4, 8, 8]]', () => {
     var testSquare = [[0, 7, 6], [9, 5, 1], [4, 8, 8]]
     expect(magicSquare.hasDuplicatesOrZeros(testSquare)).toEqual(true)
+  })
+})
+
+describe('convertNumberToSquare()', () => {
+  test('should return -1 for number = 123', () => {
+    var number = 123
+    expect(magicSquare.convertNumberToSquare(number)).toEqual(-1)
+  })
+
+  test('should return -1 for number = 123', () => {
+    var number = 1234
+    var expectedArr = [[1, 2], [3, 4]]
+    expect(magicSquare.convertNumberToSquare(number)).toEqual(expect.arrayContaining(expectedArr))
+  })
+
+  test('should return -1 for number = 123', () => {
+    var number = 123456
+    expect(magicSquare.convertNumberToSquare(number)).toEqual(-1)
+  })
+
+  test('should return -1 for number = 123', () => {
+    var number = 123456789
+    var expectedArr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    expect(magicSquare.convertNumberToSquare(number)).toEqual(expect.arrayContaining(expectedArr))
   })
 })

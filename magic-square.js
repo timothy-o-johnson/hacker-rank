@@ -137,14 +137,10 @@ function doDiagonalsSumToMagicSum (square, magicSum) {
   }
 
   // topRight to bottomleft
-
   for (pos = square[0].length - 1; pos > -1; pos--) {
     diagonal2 += square[pos][pos2]
     pos2++
   }
-
-  console.log('d1', diagonal1)
-  console.log('d2', diagonal2)
 
   return diagonal1 === diagonal2 && magicSum === diagonal1
 }
@@ -166,10 +162,33 @@ function hasDuplicatesOrZeros (square) {
   return false
 }
 
+function convertNumberToSquare (number) {
+  var numArr = []
+  number = number.toString()
+  var colSize = number.length
+  colSize = Math.sqrt(colSize)
+  var arrRow = []
+
+  if (Number.isInteger(colSize)) {
+    for (var digit = 0; digit < number.length; digit++) {
+      arrRow.push(parseInt(number[digit]))
+      if (arrRow.length === colSize) {
+        numArr.push(arrRow)
+        arrRow = []
+      }
+    }
+  } else {
+    numArr = -1
+  }
+
+  return numArr
+}
+
 var magicSum = 15
 var testSquare = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+var number = 100000000
 
-console.log('anyDuplicates(): ', hasDuplicatesOrZeros(testSquare))
+console.log('convertNumberToSquare(): ', convertNumberToSquare(number))
 
 module.exports = {
   isMagicSquare,
@@ -178,5 +197,6 @@ module.exports = {
   doRowsSumToMagicSum,
   doColumnsSumToMagicSum,
   doDiagonalsSumToMagicSum,
-  hasDuplicatesOrZeros
+  hasDuplicatesOrZeros,
+  convertNumberToSquare
 }
