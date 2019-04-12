@@ -174,18 +174,18 @@ describe('convertNumberToSquare()', () => {
     expect(magicSquare.convertNumberToSquare(number)).toEqual(-1)
   })
 
-  test('should return -1 for number = 123', () => {
+  test('should return -1 for number = 1234', () => {
     var number = 1234
     var expectedArr = [[1, 2], [3, 4]]
     expect(magicSquare.convertNumberToSquare(number)).toEqual(expect.arrayContaining(expectedArr))
   })
 
-  test('should return -1 for number = 123', () => {
+  test('should return -1 for number = 123456', () => {
     var number = 123456
     expect(magicSquare.convertNumberToSquare(number)).toEqual(-1)
   })
 
-  test('should return -1 for number = 123', () => {
+  test('should return [[1, 2, 3], [4, 5, 6], [7, 8, 9]] for number = 123456789', () => {
     var number = 123456789
     var expectedArr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     expect(magicSquare.convertNumberToSquare(number)).toEqual(expect.arrayContaining(expectedArr))
