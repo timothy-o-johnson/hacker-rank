@@ -37,21 +37,20 @@ function isMagicSquare (square) {
 }
 
 function isSquare (square) {
-  console.log('square', square)
   var n = square.length
-  console.log('n = ', n)
 
   // test if square
   if (!Array.isArray(square)) {
     return false
   }
 
-  square.forEach(function (row) {
+  for (var i = 0; i < n; i++) {
+    var row = square[i]
+
     if (row.length !== n) {
-      console.log('row.length', row.length)
       return false
     }
-  })
+  }
 
   return true
 }
