@@ -1,6 +1,6 @@
 const magicSquare = require('./magic-square')
 
-/* global test describe expect*/
+/* global test describe expect */
 
 describe('isMagicSquare()', () => {
   test(' [ [2,7,6], [9,5,1], [4, 3, 8] ] should return true', () => {
@@ -35,5 +35,17 @@ describe('isSquare()', () => {
   test('return false if square is an 4 x 3 array', () => {
     var testSquare = [[2, 7, 6, 4], [9, 5, 1, 4], [9, 5, 1, 4]]
     expect(magicSquare.isSquare(testSquare)).toEqual(false)
+  })
+})
+
+describe('getMagicSum()', () => {
+  test('return sum of first row of 4x4 array ', () => {
+    var testSquare = [[2, 7, 6, 4], [9, 5, 1, 4], [9, 5, 1, 4]]
+    expect(magicSquare.getMagicSum(testSquare)).toEqual(19)
+  })
+
+  test('return sum of first row of 3x3 array', () => {
+    var testSquare = [[2, 7, 6], [9, 5, 1]]
+    expect(magicSquare.getMagicSum(testSquare)).toEqual(15)
   })
 })

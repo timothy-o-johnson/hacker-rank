@@ -29,7 +29,27 @@ function formingMagicSquare (s) {
 }
 
 function isMagicSquare (square) {
-  // test across
+  var size = square.length
+  var i
+  var j
+  var sum = 0
+  var magicSum = getMagicSum(square)
+  var row
+  // doRowsSumToMagicSum
+
+  for (i = 0; i < size; i++) {
+    row = square[i]
+
+    for (j = 0; j < size; j++) {
+      sum += row[j]
+    }
+
+    if (sum !== magicSum) {
+      return false
+    }
+    sum = 0
+  }
+
   // test down
   // test diagnol
 
@@ -55,4 +75,14 @@ function isSquare (square) {
   return true
 }
 
-module.exports = { isMagicSquare, isSquare }
+function getMagicSum (square) {
+  var magicNumber = 0
+  var row = square[0]
+
+  row.forEach(el => {
+    return (magicNumber += el)
+  })
+
+  return magicNumber
+}
+module.exports = { isMagicSquare, isSquare, getMagicSum }
