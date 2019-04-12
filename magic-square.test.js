@@ -150,3 +150,20 @@ describe('doDiagonalsSumToMagicSum()', () => {
     expect(magicSquare.doDiagonalsSumToMagicSum(testSquare, magicSum)).toEqual(true)
   })
 })
+
+describe('hasDuplicatesOrZeros()', () => {
+  test('should return false testSquare = [[2, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+    var testSquare = [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
+    expect(magicSquare.hasDuplicatesOrZeros(testSquare)).toEqual(false)
+  })
+
+  test('should return true testSquare = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+    var testSquare = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]
+    expect(magicSquare.hasDuplicatesOrZeros(testSquare)).toEqual(true)
+  })
+
+  test('should return true testSquare = [[2, 7, 6], [9, 5, 1], [4, 8, 8]]', () => {
+    var testSquare = [[0, 7, 6], [9, 5, 1], [4, 8, 8]]
+    expect(magicSquare.hasDuplicatesOrZeros(testSquare)).toEqual(true)
+  })
+})

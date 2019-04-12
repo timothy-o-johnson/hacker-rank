@@ -36,20 +36,6 @@ function isMagicSquare (square) {
   var magicSum = getMagicSum(square)
   var row
   // doRowsSumToMagicSum
-
-  for (i = 0; i < size; i++) {
-    row = square[i]
-
-    for (j = 0; j < size; j++) {
-      sum += row[j]
-    }
-
-    if (sum !== magicSum) {
-      return false
-    }
-    sum = 0
-  }
-
   // test down
   // test diagnol
 
@@ -163,9 +149,34 @@ function doDiagonalsSumToMagicSum (square, magicSum) {
   return diagonal1 === diagonal2 && magicSum === diagonal1
 }
 
+function hasDuplicatesOrZeros (square) {
+  var duplObj = {}
+  var val
+
+  for (var row = 0; row < square.length; row++) {
+    for (var col = 0; col < square.length; col++) {
+      val = square[row][col]
+      if (duplObj[val] || val === 0) {
+        return true
+      } else {
+        duplObj[val] = true
+      }
+    }
+  }
+  return false
+}
+
 var magicSum = 15
 var testSquare = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-console.log(doDiagonalsSumToMagicSum(testSquare, magicSum))
+console.log('anyDuplicates(): ', hasDuplicatesOrZeros(testSquare))
 
-module.exports = { isMagicSquare, isSquare, getMagicSum, doRowsSumToMagicSum, doColumnsSumToMagicSum, doDiagonalsSumToMagicSum }
+module.exports = {
+  isMagicSquare,
+  isSquare,
+  getMagicSum,
+  doRowsSumToMagicSum,
+  doColumnsSumToMagicSum,
+  doDiagonalsSumToMagicSum,
+  hasDuplicatesOrZeros
+}
