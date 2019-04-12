@@ -134,9 +134,38 @@ function doColumnsSumToMagicSum (square, magicSum) {
   return sum === magicSum
 }
 
+function doDiagonalsSumToMagicSum (square, magicSum) {
+  // var topLeft = 0
+  // var topRight = square.length - 1
+  var pos
+  var pos2 = 0
+  var diagonal1 = 0
+  var diagonal2 = 0
+
+  if (!isSquare(square)) {
+    return false
+  }
+  // topLeft to bottomRight
+  for (pos = 0; pos < square[0].length; pos++) {
+    diagonal1 += square[pos][pos]
+  }
+
+  // topRight to bottomleft
+
+  for (pos = square[0].length - 1; pos > -1; pos--) {
+    diagonal2 += square[pos][pos2]
+    pos2++
+  }
+
+  console.log('d1', diagonal1)
+  console.log('d2', diagonal2)
+
+  return diagonal1 === diagonal2 && magicSum === diagonal1
+}
+
 var magicSum = 15
-var testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 3]]
+var testSquare = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-doColumnsSumToMagicSum(testSquare, magicSum)
+console.log(doDiagonalsSumToMagicSum(testSquare, magicSum))
 
-module.exports = { isMagicSquare, isSquare, getMagicSum, doRowsSumToMagicSum, doColumnsSumToMagicSum }
+module.exports = { isMagicSquare, isSquare, getMagicSum, doRowsSumToMagicSum, doColumnsSumToMagicSum, doDiagonalsSumToMagicSum }
