@@ -85,4 +85,27 @@ function getMagicSum (square) {
 
   return magicNumber
 }
-module.exports = { isMagicSquare, isSquare, getMagicSum }
+
+function doRowsSumToMagicSum (square, magicSum) {
+  var i
+  var j
+  var row
+  var sum = 0
+
+  for (i = 0; i < square.length; i++) {
+    row = square[i]
+    sum = 0
+    for (j = 0; j < row.length; j++) {
+      sum += row[j]
+    }
+
+    if (sum !== magicSum) {
+      return false
+    }
+  }
+
+  // make sure the sum is equal to magic sum
+  return sum === magicSum
+}
+
+module.exports = { isMagicSquare, isSquare, getMagicSum, doRowsSumToMagicSum }
