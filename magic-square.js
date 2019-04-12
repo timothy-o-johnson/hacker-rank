@@ -22,10 +22,27 @@ Constraints
 
 */
 
-function formingMagicSquare (s) {
-  // check if magic square
+function formingMagicSquare (square) {
+  var startingNumbers = getStartingNumbers(square)
+  var startNum = startingNumbers.startingNumber
+  var endNum = startingNumbers.endingNumber
+  var testSquare
 
-  console.log(s)
+  console.log('startNum', startNum)
+  console.log('endNum', endNum)
+
+  for (var i = startNum; i < endNum; i++) {
+    if (i === 276951438) {
+      console.log('found it!', 276951438)
+    }
+    if (!numberHasDuplicatesOrZeros(i)) {
+      testSquare = convertNumberToSquare(i)
+      //console.log('isMagicSquare(testSquare)', isMagicSquare(testSquare))
+      if (isMagicSquare(testSquare)) {
+        //console.log('testSquare', testSquare)
+      }
+    }
+  }
 }
 
 function isMagicSquare (square) {
@@ -37,6 +54,23 @@ function isMagicSquare (square) {
     doColumnsSumToMagicSum(square, magicSum) &&
     doDiagonalsSumToMagicSum(square, magicSum)
   )
+}
+
+function getStartingNumbers (square) {
+  var size = square.length
+  var totalDigits = size * size
+
+  var startingNumber = ''
+  var endingNumber = ''
+
+  for (var i = 0; i < totalDigits; i++) {
+    startingNumber += i + 1
+    endingNumber += 9
+  }
+  return {
+    startingNumber: parseInt(startingNumber),
+    endingNumber: parseInt(endingNumber)
+  }
 }
 
 function isSquare (square) {
@@ -199,12 +233,13 @@ function convertNumberToSquare (number) {
 }
 
 var magicSum = 15
-var testSquare = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+var square = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 var number = 100000000
 
-console.log('convertNumberToSquare(): ', convertNumberToSquare(number))
+formingMagicSquare(square)
 
 module.exports = {
+  getStartingNumbers,
   isMagicSquare,
   isSquare,
   getMagicSum,

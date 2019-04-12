@@ -208,3 +208,25 @@ describe('numberHasDuplicatesOrZeros()', () => {
     expect(magicSquare.numberHasDuplicatesOrZeros(number)).toEqual(true)
   })
 })
+
+describe('getStartingNumbers()', () => {
+  test('should return startingNumber = 123456789 for square = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+    var square = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]
+    expect(magicSquare.getStartingNumbers(square).startingNumber).toEqual(123456789)
+  })
+
+  test('should return startingNumber = 1234 for square = [[1, 2], [3, 4]]', () => {
+    var square = [[1, 2], [3, 4]]
+    expect(magicSquare.getStartingNumbers(square).startingNumber).toEqual(1234)
+  })
+
+  test('should return 123456789 for square = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+    var square = [[0, 7, 6], [9, 5, 1], [4, 3, 8]]
+    expect(magicSquare.getStartingNumbers(square).endingNumber).toEqual(999999999)
+  })
+
+  test('should return 1234 for square = [[1, 2], [3, 4]]', () => {
+    var square = [[1, 2], [3, 4]]
+    expect(magicSquare.getStartingNumbers(square).endingNumber).toEqual(9999)
+  })
+})
