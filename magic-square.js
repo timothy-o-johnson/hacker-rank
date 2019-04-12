@@ -29,17 +29,14 @@ function formingMagicSquare (s) {
 }
 
 function isMagicSquare (square) {
-  var size = square.length
-  var i
-  var j
-  var sum = 0
   var magicSum = getMagicSum(square)
-  var row
-  // doRowsSumToMagicSum
-  // test down
-  // test diagnol
 
-  return true
+  return (
+    isSquare(square) &&
+    doRowsSumToMagicSum(square, magicSum) &&
+    doColumnsSumToMagicSum(square, magicSum) &&
+    doDiagonalsSumToMagicSum(square, magicSum)
+  )
 }
 
 function isSquare (square) {
@@ -145,7 +142,7 @@ function doDiagonalsSumToMagicSum (square, magicSum) {
   return diagonal1 === diagonal2 && magicSum === diagonal1
 }
 
-function hasDuplicatesOrZeros (square) {
+function squareHasDuplicatesOrZeros (square) {
   var duplObj = {}
   var val
 
@@ -197,6 +194,6 @@ module.exports = {
   doRowsSumToMagicSum,
   doColumnsSumToMagicSum,
   doDiagonalsSumToMagicSum,
-  hasDuplicatesOrZeros,
+  squareHasDuplicatesOrZeros,
   convertNumberToSquare
 }
