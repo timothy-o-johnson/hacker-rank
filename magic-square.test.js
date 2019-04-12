@@ -80,3 +80,37 @@ describe('doRowsSumToMagicSum()', () => {
     expect(magicSquare.doRowsSumToMagicSum(testSquare, magicSum)).toEqual(false)
   })
 })
+
+describe('doColumnsSumToMagicSum()', () => {
+  test('should return true for magicSum = 15 and testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 3]]', () => {
+    var magicSum = 15
+    var testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 3]]
+    expect(magicSquare.doColumnsSumToMagicSum(testSquare, magicSum)).toEqual(true)
+  })
+
+  test('should return false for magicSum = 14 and testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 3]]', () => {
+    var magicSum = 14
+    var testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 3]]
+    expect(magicSquare.doColumnsSumToMagicSum(testSquare, magicSum)).toEqual(false)
+  })
+
+  test('should return true for magicSum = 7 and testSquare = [[2, 4], [5, 3]]', () => {
+    var magicSum = 7
+    var testSquare = [[2, 4], [5, 3]]
+    expect(magicSquare.doColumnsSumToMagicSum(testSquare, magicSum)).toEqual(true)
+  })
+
+  test('should return false for magicSum = 8 and testSquare = [[2, 4], [5, 3]]', () => {
+    var magicSum = 8
+    var testSquare = [[2, 4], [5, 3]]
+    expect(magicSquare.doColumnsSumToMagicSum(testSquare, magicSum)).toEqual(false)
+  })
+
+  test('should return false for magicSum = 14 and testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 3]]', () => {
+    var magicSum = 15
+    var testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 1]]
+    expect(magicSquare.doColumnsSumToMagicSum(testSquare, magicSum)).toEqual(false)
+  })
+
+
+})

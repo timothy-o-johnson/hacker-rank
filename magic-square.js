@@ -108,4 +108,35 @@ function doRowsSumToMagicSum (square, magicSum) {
   return sum === magicSum
 }
 
-module.exports = { isMagicSquare, isSquare, getMagicSum, doRowsSumToMagicSum }
+/**
+ * returns false if all rows don't contain same number of columns
+ * @param {*} square
+ * @param {*} magicSum
+ */
+function doColumnsSumToMagicSum (square, magicSum) {
+  var col
+  var row
+  var sum
+
+  if (!isSquare(square)) {
+    return false
+  }
+
+  for (col = 0; col < square[0].length; col++) {
+    sum = 0
+    for (row = 0; row < square.length; row++) {
+      sum += square[row][col]
+    }
+    if (sum !== magicSum) {
+      return false
+    }
+  }
+  return sum === magicSum
+}
+
+var magicSum = 15
+var testSquare = [[2, 7, 3], [5, 3, 9], [8, 5, 3]]
+
+doColumnsSumToMagicSum(testSquare, magicSum)
+
+module.exports = { isMagicSquare, isSquare, getMagicSum, doRowsSumToMagicSum, doColumnsSumToMagicSum }
