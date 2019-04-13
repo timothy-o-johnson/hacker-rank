@@ -230,3 +230,12 @@ describe('getStartingNumbers()', () => {
     expect(magicSquare.getStartingNumbers(square).endingNumber).toEqual(9999)
   })
 })
+
+describe('convertSquareToNumber()', () => {
+  test('should return  = 176951438 for square = [[1, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+    var square = [[1, 7, 6], [9, 5, 1], [4, 3, 8]]
+    expect(magicSquare.convertSquareToNumber(square)).toEqual(176951438)
+  })
+
+})
+
