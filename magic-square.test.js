@@ -207,6 +207,11 @@ describe('numberHasDuplicatesOrZeros()', () => {
     var number = 1203
     expect(magicSquare.numberHasDuplicatesOrZeros(number)).toEqual(true)
   })
+
+  test('should return false for number = 276951438', () => {
+    var number = 276951438
+    expect(magicSquare.numberHasDuplicatesOrZeros(number)).toEqual(false)
+  })
 })
 
 describe('getStartingNumbers()', () => {
