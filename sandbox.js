@@ -1,33 +1,56 @@
-const scores = [100, 90, 90, 80, 75, 60] // [100, 100, 50, 40, 40, 20, 10]//[200, 200, 150, 130, 125, 125, 100, 100, 95, 90, 6]
-const alice = [50, 65, 77, 90, 102] // [5, 25, 50, 120] //[5, 80, 125, 150, 150, 176, 200, 210]
-let scoreboard = {}
-let score = ''
-let rank = 1
-let aIndex = alice.length - 1
-let aliceRanking = []
+var test_1 = {
+  G: [
+    '7283455864',
+    '6731158619',
+    '8988242643',
+    '2229505813',
+    '3830589324',
+    '2229505813',
+    '5633845374',
+    '5633845374',
+    '6473530293',
+    '7053106601',
+    '2229505813',
+    '0834282956',
+    '4607924137'
+  ],
 
-if (alice[aIndex] >= scores[0]) {
-  aliceRanking.push(rank)
-  aIndex--
+  P: ['9505', '3845', '3530']
 }
 
-for (let i = 0; i < scores.length; i++) {
-  score = scores[i]
-  if (!scoreboard[score]) {
-    scoreboard[score] = rank
-  
-    while (alice[aIndex] >= score) {
-      aliceRanking.unshift(rank)
-      aIndex--
+let i = 0
+let str
+let regexp
+const numOfPatternRows = test_1.P.length
+let matchArr = []
+let row
+let col
+
+for (i = 0; i < numOfPatternRows; i++) {
+  regexp = RegExp(test_1.P[i], 'g')
+
+  for (j = 0; j < test_1.G.length; j++) {
+    str = test_1.G[j]
+
+    while ((matches = regexp.exec(str)) !== null) {
+      row = i
+      col = regexp.lastIndex
+
+      matchArr.push([row, col])
+      console.log(`Found ${regexp}at row ${row} at ${col}.`)
     }
-    rank++
   }
 }
 
-while(aIndex >= 0){
-  aliceRanking.unshift(rank)
-  aIndex--
+console.log('matchArr', matchArr)
+let matchCount = 0
+
+for (i = 1; i < matchArr.length - 1; i++) {
+  if (matchArr[i][1] === matchArr[i + 1][1]) {
+    matchCount += 1
+  } else {
+    matchCount = 0
+  }
 }
 
-console.log(aliceRanking)
-console.log(scoreboard)
+console.log(matchCount === numOfPatternRows)
