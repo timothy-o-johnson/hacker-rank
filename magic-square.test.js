@@ -235,3 +235,26 @@ describe('getStartingNumbers()', () => {
     expect(magicSquare.getStartingNumbers(square).endingNumber).toEqual(9999)
   })
 })
+
+describe('convertSquareToNumber()', () => {
+  test('should return  176951438 for square = [[1, 7, 6], [9, 5, 1], [4, 3, 8]]', () => {
+    var square = [[1, 7, 6], [9, 5, 1], [4, 3, 8]]
+    expect(magicSquare.convertSquareToNumber(square)).toEqual(176951438)
+  })
+
+})
+
+describe('formingMagicSquare()', () => {
+  test('should return  1 for square = square = [[4,9,2], [3,5,7], [8,1,5]]', () => {
+    var square = [[4,9,2], [3,5,7], [8,1,5]]
+    expect(magicSquare.formingMagicSquare(square)).toEqual(1)
+  })
+
+  test('should return  4 for square = square = [[4,9,2], [3,5,7], [8,1,5]]', () => {
+    var square = [[4,8,2], [4,5,7], [6,1,6]]
+    expect(magicSquare.formingMagicSquare(square)).toEqual(4)
+  })
+
+})
+
+

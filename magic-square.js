@@ -23,26 +23,38 @@ Constraints
 */
 
 function formingMagicSquare (square) {
-  var startingNumbers = getStartingNumbers(square)
-  var startNum = startingNumbers.startingNumber
-  var endNum = startingNumbers.endingNumber
-  var testSquare
-
-  console.log('startNum', startNum)
-  console.log('endNum', endNum)
-
-  for (var i = startNum; i < endNum; i++) {
-    if (i === 276951438) {
-      console.log('found it!', 276951438)
-    }
-    if (!numberHasDuplicatesOrZeros(i)) {
-      testSquare = convertNumberToSquare(i)
-      //console.log('isMagicSquare(testSquare)', isMagicSquare(testSquare))
-      if (isMagicSquare(testSquare)) {
-        //console.log('testSquare', testSquare)
+  const magicSquares = [816357492, 618753294, 492357816, 294753618, 834159672, 438951276, 672159834, 276951438]
+  let lowestCost = 81
+  let lowestCostEl = ''
+  let currCost = 0
+  var squareAsNumber = convertSquareToNumber(square).toString()
+  // for each magic number, determine lowest cost
+  magicSquares.forEach(el => {
+    currCost = 0
+    el = el.toString()
+    for (var i = 0; i < squareAsNumber.length; i++) {
+      currCost += Math.abs(el[i] - squareAsNumber[i])
+      if (currCost > lowestCost) {
+        break
       }
     }
-  }
+
+    lowestCost = currCost < lowestCost ? currCost : lowestCost
+  })
+
+  return lowestCost
+}
+
+function convertSquareToNumber (square) {
+  var number = ''
+
+  square.forEach(el => {
+    el.forEach(el2 => {
+      number += el2
+    })
+  })
+
+  return parseInt(number)
 }
 
 function isMagicSquare (square) {
@@ -232,11 +244,14 @@ function convertNumberToSquare (number) {
   return numArr
 }
 
-var magicSum = 15
-var square = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-var number = 100000000
+// var magicSum = 15
+// const magicSquares = [816357492, 618753294, 492357816, 294753618, 834159672, 438951276, 672159834, 276951438]
+// 4 9 2
+// 3 5 7
+// 8 1 5
+var square = [[4, 9, 2], [3, 5, 7], [8, 1, 5]]
 
-formingMagicSquare(square)
+console.log(formingMagicSquare(square))
 
 module.exports = {
   getStartingNumbers,
@@ -248,5 +263,7 @@ module.exports = {
   doDiagonalsSumToMagicSum,
   squareHasDuplicatesOrZeros,
   convertNumberToSquare,
-  numberHasDuplicatesOrZeros
+  numberHasDuplicatesOrZeros,
+  convertSquareToNumber,
+  formingMagicSquare
 }
