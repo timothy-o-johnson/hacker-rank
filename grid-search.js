@@ -9,12 +9,12 @@ P: the pattern to search for, an array of strings */
 
 // Complete the gridSearch function below.
 
-function gridSearch (G, P) {
+function gridSearch (grid, pattern) {
   let i = 0
   let j = 0
   let str
   let regexp
-  const numOfPatternRows = P.length
+  const numOfPatternRows = pattern.length
   let matchArr = []
   let row
   let col
@@ -22,10 +22,10 @@ function gridSearch (G, P) {
   let found = false
 
   for (i = 0; i < numOfPatternRows; i++) {
-    regexp = RegExp(P[i], 'g')
+    regexp = RegExp(pattern[i], 'g')
 
-    for (j = 0; j < G.length; j++) {
-      str = G[j]
+    for (j = 0; j < grid.length; j++) {
+      str = grid[j]
 
       while ((matches = regexp.exec(str)) !== null) {
         row = i
@@ -116,8 +116,16 @@ const test_5 = {
 }
 
 const test_6 = {
-  G: ['111111111111111', '111111111111111', '111111011111111', '111111111111111', '111111111111111'],
+  G: [
+    '111111111111111', 
+    '111111111111111', 
+    '111111011111111', 
+    '111111111111111', 
+    '111111111111111'],
 
-  P: ['11111', '11111', '11110']
+  P: [
+    '11111', 
+    '11111', 
+    '11110']
 }
 gridSearch(test_6.G, test_6.P)
