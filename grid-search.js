@@ -20,6 +20,7 @@ function gridSearch (grid, pattern) {
   let matches
   let found = false
   let matchObj = {}
+  let solution
 
   // loop through each row
   for (j = 0; j < grid.length; j++) {
@@ -37,8 +38,14 @@ function gridSearch (grid, pattern) {
             row = j
             col = k + l - (patternRow.length - 1)
             // if matches entire row then save to matchArr
-            matchObj[row] = col
-            console.log(`Found patternRow ${i}: ${patternRow} in Grid at row ${row} at ${col}.`)
+            // if row field doesn't exist create one and start an array with this
+            if (!matchObj[row]) {
+              matchObj[row] = [col]
+            } else {
+              // otherwise add this match to the existing field
+              matchObj[row].push(col)
+              // console.log(`Found patternRow ${i}: ${patternRow} in Grid at row ${row} at ${col}.`)
+            }
           }
         }
       }
@@ -48,35 +55,44 @@ function gridSearch (grid, pattern) {
   console.log('matchObj', JSON.stringify(matchObj))
 
   let matchCount = 0
-  const keys = Object.keys(matchObj)
+  const gridRows = Object.keys(matchObj)
 
-  for (i = 0; i < keys.length; i++) {
-    var first = keys[i]
-    var second = (parseInt(first) + 1).toString()
+  // for each row
+  for (i = 0; i < gridRows.length; i++) {
+    var currentRow = gridRows[i]
+    var rowArr = matchObj[currentRow]
+    // loop through values
+    for (j = 0; j < rowArr.length; j++) {
+      var value = rowArr[j]
+      var nextRow = (parseInt(currentRow) + 1).toString()
+      found = false
+      matchCount = 1
+      // while there is next row and number of matches is less than the number of pattern rows
+      while (matchObj[nextRow] && matchCount < numOfPatternRows) {
+        // if that value is found in the next row, increase counter
 
-    // has to follow the row AND match the column
-    if (matchObj[first] !== null && matchObj[second] !== null && matchObj[first] === matchObj[second]) {
-     // console.log('indices', first, second)
+        if (matchObj[nextRow].includes(value)) {
+          matchCount++
+        }
 
-     // console.log('matchObj', JSON.stringify(matchObj[i]), JSON.stringify(matchObj[i + 1]))
-     // console.log('matchObj', matchObj[first], matchObj[second])
+        found = matchCount === numOfPatternRows
 
-      matchCount++
-      found = matchCount === numOfPatternRows - 1
-      if (found) {
-        break
+        if (found) {
+          solution = found ? 'YES' : 'NO'
+          console.log(solution)
+          return 'YES'
+        }
+
+        nextRow++
+        // go to next row
       }
-    } else {
-      matchCount = 0
     }
   }
-
-  var solution = found ? 'YES' : 'NO'
-
-  console.log(solution)
-  return solution
+    solution = found ? 'YES' : 'NO'
+    console.log(solution)
+    return solution
+  
 }
-
 var test_1 = {
   G: [
     '7283455864',
@@ -139,9 +155,25 @@ const test_6 = {
 
   P: ['11111', '11111', '11110']
 }
-gridSearch(test_6.G, test_6.P)
-gridSearch(test_5.G, test_5.P)
-gridSearch(test_4.G, test_4.P)
-gridSearch(test_3.G, test_3.P)
-gridSearch(test_2.G, test_2.P)
-gridSearch(test_1.G, test_1.P)
+
+const test_7= {
+ G: [
+  '456712',
+  '561245',
+  '123667',
+  '781288'],
+
+  P: ['45', '67']
+ }
+
+ gridSearch(test_7.G, test_7.P)
+ // gridSearch(test_6.G, test_6.P)
+// gridSearch(test_5.G, test_5.P)
+// gridSearch(test_4.G, test_4.P)
+// gridSearch(test_3.G, test_3.P)
+// gridSearch(test_2.G, test_2.P)
+// gridSearch(test_1.G, test_1.P)
+
+module.exports = {
+  gridSearch
+}
