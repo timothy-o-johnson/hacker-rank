@@ -1,4 +1,4 @@
-var values = ['{}[]()', '{[}]']
+var values = ['[{']
 
 function braces (values) {
   var solution = []
@@ -25,6 +25,12 @@ function braces (values) {
 
       // if open add it to braceTracker
       if (openOrClosed === 'open') {
+        // if open and the last element
+        if (i === current.length - 1) {
+          solution.push('NO')
+          console.log('solution', solution)
+          return
+        }
         braceTracker.push(brace)
       } else {
         // else see if closes the appropriate last brace in braceTracker
@@ -45,13 +51,15 @@ function braces (values) {
         if (isClosed) {
           braceTracker.pop()
         } else {
-          solution.push('No')
+          solution.push('NO')
           console.log('solution', solution)
+          return
         }
 
         if (i === current.length - 1 && braceTracker.length === 0) {
-          solution.push('Yes')
+          solution.push('YES')
           console.log('solution', solution)
+          return
         }
       }
     }
