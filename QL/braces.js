@@ -1,57 +1,67 @@
 var values = ['{}[]()', '{[}]']
 
-
-function braces (values){
+function braces (values) {
   var solution = []
-values.forEach(current => {
-  var current = values[0]
 
-  for (var i = 0; i < current.length; i++) {
+  values.forEach(current => {
     var braceTracker = []
-    var lastOpenBrace
+    for (var i = 0; i < current.length; i++) {
+      var brace = current[i]
+      var openOrClosed
 
-    var brace = current[i] 
-    var openOrClosed
+      // determine if current brace is opened or closed
+      switch (brace) {
+        case '{':
+        case '[':
+        case '(':
+          openOrClosed = 'open'
+          break
+        case '}':
+        case ']':
+        case ')':
+          openOrClosed = 'closed'
+          break
+      }
 
-    // determine if it's opened or closed
-    switch (brace) {
-      case '{':
-      case '[':
-      case '(':
-        openOrClosed = 'open'
-        break
-      case '}':
-      case ']':
-      case ')':
-        openOrClosed = 'closed'
-        break
-    }
-    // if open add it to braceTracker
-    if (openOrClosed === 'open') {
-      braceTracker.push(brace)
-    } else {
-      // else see if closes the appropriate last brace in braceTracker
-      // if it does, remove that last brace, and check the following brace
-      for (var j = braceTracker.length - 1; j >= 0; j--) {
-        lastOpenBrace = braceTracker[j] 
-        var braceCompare = lastOpenBrace + brace
+      // if open add it to braceTracker
+      if (openOrClosed === 'open') {
+        braceTracker.push(brace)
+      } else {
+        // else see if closes the appropriate last brace in braceTracker
+        var isClosed
+        var lastBrace = braceTracker.length - 1
+        var braceCompare = braceTracker[lastBrace] + brace
 
         switch (braceCompare) {
           case '{}':
           case '[]':
           case '()':
-            // move on to next one
+            isClosed = true
             break
           default:
-            solution.push('NO')
+            isClosed = false
+        }
+
+        if (isClosed) {
+          braceTracker.pop()
+        } else {
+          solution.push('No')
+          console.log('solution', solution)
+        }
+
+        if (i === current.length - 1 && braceTracker.length === 0) {
+          solution.push('Yes')
+          console.log('solution', solution)
         }
       }
     }
-  }
-  solution.push('YES')  
+  })
+
   return solution
 }
-)
-}
 
-console.log( braces(values) )
+console.log(braces(values))
+
+module.exports = {
+  braces
+}
