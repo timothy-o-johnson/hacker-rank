@@ -10,11 +10,7 @@
     "test": "jest --watch -o",
     "test-pr": "jest"
   },
-
-  "devDependencies": {
-    "jest": "^24.4.0"
-  },
-
+  "devDependencies": {},
   "name": "hacker-rank",
   "version": "1.0.0",
   "description": "a space to capture hacker rank practice",
@@ -22,18 +18,14 @@
   "dependencies": {
     "jest": "^24.7.1"
   },
-
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/timothy-o-johnson/hacker-rank.git"
   },
-
   "author": "timothy-o-johnson",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/timothy-o-johnson/hacker-rank/issues"
   },
-
   "homepage": "https://github.com/timothy-o-johnson/hacker-rank#readme"
 }
