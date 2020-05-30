@@ -7,7 +7,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "magic-square",
       "program": "${workspaceFolder}/magic-square.js"
     },
     {
@@ -15,6 +15,12 @@
       "request": "launch",
       "name": "grid search",
       "program": "/home/pavementii/Personal/hacker-rank/grid-search.js"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "array-manipulation",
+      "program": "${workspaceFolder}/array-manipulation.js"
     }
   ]
 }
