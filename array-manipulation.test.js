@@ -17,5 +17,12 @@ describe('arrayManipulation()', () => {
         expect(arrayManipulation.arrayManipulation(lengthOfArray, query)).toEqual(10)
     })
 
+    test('given parameters 10 & [[1, 5, 3], [4, 8, 7], [6,9,1] ] , should return 10', () => {
+        var lengthOfArray = 10
+        var query = [[1, 5, 3], [4, 8, 7], [6, 9, 1]]
+
+        expect(arrayManipulation.arrayManipulation(lengthOfArray, query)).toEqual(10)
+    })
+
 })
 
